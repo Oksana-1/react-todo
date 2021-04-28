@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import "./ToDoItem.css";
 
-const ToDoItem = ({todo}) => {
-	return (
-		<span className={todo.important ? "redText" : ""}>
-			{todo.label}
+export default class ToDoItem extends Component{
+	render() {
+		const { label, important} = this.props.todo;
+		return (
+			<span className={ important ? "redText" : "" }>
+			{label}
 		</span>
-	);
-};
-
-export default ToDoItem;
+		);
+	}
+}
