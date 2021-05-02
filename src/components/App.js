@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AppHeader from "./AppHeader/AppHeader";
 import SearchPanel from "./SearchPanel/SearchPanel";
 import ToDoList from "./ToDoList/ToDoList";
+import AddItem from "./AddItem/AddItem";
 
 export default class App extends Component {
 	todos = ["Wake up",  "Drink coffee", "Eat sandwich"];
@@ -48,6 +49,13 @@ export default class App extends Component {
 			};
 		});
 	}
+	onAdd = (label) => {
+		this.setState(({items}) => {
+			return {
+				items: [...items, this.createTodoItem(label)]
+			};
+		});
+	}
 	render() {
 		const items = this.state.items;
 		const doneCount = items.filter((item) => item.done).length;
@@ -61,6 +69,9 @@ export default class App extends Component {
 					onToggleImportant={this.onToggleImportant}
 					onToggleDone={this.onToggleDone}
 					onDelete={this.onDelete}
+				/>
+				<AddItem
+					onSubmit={this.onAdd}
 				/>
 			</div>
 		);
