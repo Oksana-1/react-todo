@@ -1,5 +1,12 @@
 import React from "react";
 
-const AppHeader = () => <h1>My To-Do List</h1>;
+const AppHeader = ({todoCount, doneCount}) => {
+	return (
+		<div>
+			<h1>To Do</h1>
+			<p>Summary: <span>{todoCount} more to do</span> <span>({doneCount} items done)</span></p>
+		</div>
+	);
+}
 
 export default AppHeader;

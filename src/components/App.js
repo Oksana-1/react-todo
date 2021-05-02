@@ -50,9 +50,11 @@ export default class App extends Component {
 	}
 	render() {
 		const items = this.state.items;
+		const doneCount = items.filter((item) => item.done).length;
+		const todoCount = items.length - doneCount;
 		return (
 			<div>
-				<AppHeader/>
+				<AppHeader doneCount={doneCount} todoCount={todoCount}/>
 				<SearchPanel/>
 				<ToDoList
 					todos={ items }
