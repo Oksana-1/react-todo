@@ -2,18 +2,20 @@ import React from "react";
 import "./ToDoItem.css";
 
 const ToDoItem = ({label, important, done, onToggleImportantClick, onToggleDoneClick, onDeleteClick}) => {
-	const classNames = `${important ? "redText": ""} ${done ? " crossOut": ""}`;
+	const classNames = `item-label${important ? " redText": ""} ${done ? " crossOut": ""}`;
 	return (
-		<span>
+		<div className="item-wrap">
 			<span
 				className={classNames}
 				onClick={onToggleDoneClick}
 			>
 				{label}
 			</span>
-			<button onClick={onDeleteClick}>DEL</button>
-			<button  onClick={onToggleImportantClick}>!</button>
-		</span>
+			<div className="buttons-wrap">
+				<button onClick={onDeleteClick}>DEL</button>
+				<button  onClick={onToggleImportantClick}>!</button>
+			</div>
+		</div>
 	);
 };
 export default ToDoItem;

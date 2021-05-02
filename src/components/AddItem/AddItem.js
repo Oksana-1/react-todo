@@ -19,7 +19,7 @@ export default class AddItem extends Component {
 	}
 	render() {
 		return (
-			<form onSubmit={ this.addItem }>
+			<form onSubmit={ this.addItem } className="add-item-wrap">
 				<input
 					type="text"
 					placeholder="New to do"

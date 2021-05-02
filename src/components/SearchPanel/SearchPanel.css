@@ -1,0 +1,7 @@
+.search-wrap {
+    display: flex;
+    justify-content: center;
+}
+.search-wrap input {
+    margin-right: 10px;
+}

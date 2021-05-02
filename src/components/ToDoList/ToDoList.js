@@ -1,5 +1,6 @@
 import React from "react";
 import ToDoItem from "../ToDoItem/ToDoItem";
+import "./ToDoList.css";
 
 const ToDoList = ({todos, onDelete, onToggleDone, onToggleImportant}) => {
 	const itemElements = todos.map((todo) => {
@@ -16,7 +17,7 @@ const ToDoList = ({todos, onDelete, onToggleDone, onToggleImportant}) => {
 		)
 	});
 	return (
-		<ul>
+		<ul className="item-list">
 			{itemElements}
 		</ul>
 	);

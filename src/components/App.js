@@ -3,6 +3,7 @@ import AppHeader from "./AppHeader/AppHeader";
 import SearchPanel from "./SearchPanel/SearchPanel";
 import ToDoList from "./ToDoList/ToDoList";
 import AddItem from "./AddItem/AddItem";
+import "./App.css";
 
 export default class App extends Component {
 	todos = ["Wake up",  "Drink coffee", "Eat sandwich"];
@@ -61,7 +62,7 @@ export default class App extends Component {
 		const doneCount = items.filter((item) => item.done).length;
 		const todoCount = items.length - doneCount;
 		return (
-			<div>
+			<div className="container-500">
 				<AppHeader doneCount={doneCount} todoCount={todoCount}/>
 				<SearchPanel/>
 				<ToDoList

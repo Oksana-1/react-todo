@@ -1,0 +1,19 @@
+.add-item-wrap {
+    display: flex;
+    justify-content: center;
+}
+.add-item-wrap button {
+    border-radius: 0;
+    border: none;
+    background-color: #fff;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.add-item-wrap button:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
