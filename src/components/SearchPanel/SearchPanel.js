@@ -10,9 +10,6 @@ const SearchPanel = ({onSearch, searchString}) => {
 				onChange={onSearch}
 				value={searchString}
 			/>
-			<span>All&nbsp;</span>
-			<span>Active&nbsp;</span>
-			<span>Done</span>
 		</div>
 	);
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AppHeader from "./AppHeader/AppHeader";
 import SearchPanel from "./SearchPanel/SearchPanel";
+import StatusFilter from "./StatusFilter/StatusFilter";
 import ToDoList from "./ToDoList/ToDoList";
 import AddItem from "./AddItem/AddItem";
 import "./App.css";
@@ -24,7 +25,8 @@ export default class App extends Component {
 	}
 	state = {
 		items: this.todos.map(todo => this.createTodoItem(todo)),
-		searchString: ''
+		searchString: "",
+		filterString: ""
 	}
 	onToggleImportant = (id) => {
 		this.setState(({items}) => {
@@ -63,20 +65,40 @@ export default class App extends Component {
 			searchString: e.target.value
 		});
 	}
+	onFilter = (filterString) => {
+		this.setState ({
+			filterString
+		});
+	}
 	render() {
-		const {items, searchString} = this.state;
+		const {items, searchString, filterString} = this.state;
 		const doneCount = items.filter((item) => item.done).length;
 		const todoCount = items.length - doneCount;
-		const filteredItems = items.filter(
-			(item) => item.label.toLowerCase().includes(searchString.toLowerCase())
-		);
+		const filteredItems = items
+			.filter(
+			(item) => item.label.toLowerCase().includes(searchString.toLowerCase()))
+			.filter((item) => {
+				if (filterString === "active" ) {
+					return  !item.done
+				} else if  (filterString === "done") {
+					return  item.done;
+				}
+				return true;
+			})
+		;
 		return (
 			<div className="container-500">
 				<AppHeader doneCount={doneCount} todoCount={todoCount}/>
-				<SearchPanel
-					onSearch={this.onSearch}
-					searchString={searchString}
-				/>
+				<div className="search-filter-wrap">
+					<SearchPanel
+						onSearch={this.onSearch}
+						searchString={searchString}
+					/>
+					<StatusFilter
+						onFilter={this.onFilter}
+						filterString={filterString}
+					/>
+				</div>
 				<ToDoList
 					todos={ filteredItems }
 					onToggleImportant={this.onToggleImportant}

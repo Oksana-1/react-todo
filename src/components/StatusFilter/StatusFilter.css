@@ -1,0 +1,7 @@
+.filter-btn {
+    margin-right: 5px;
+    cursor: pointer;
+}
+.filter-btn.active {
+    color: tomato;
+}
