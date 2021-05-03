@@ -23,7 +23,8 @@ export default class App extends Component {
 		];
 	}
 	state = {
-		items: this.todos.map(todo => this.createTodoItem(todo))
+		items: this.todos.map(todo => this.createTodoItem(todo)),
+		searchString: ''
 	}
 	onToggleImportant = (id) => {
 		this.setState(({items}) => {
@@ -57,16 +58,27 @@ export default class App extends Component {
 			};
 		});
 	}
+	onSearch = (e) => {
+		this.setState ({
+			searchString: e.target.value
+		});
+	}
 	render() {
-		const items = this.state.items;
+		const {items, searchString} = this.state;
 		const doneCount = items.filter((item) => item.done).length;
 		const todoCount = items.length - doneCount;
+		const filteredItems = items.filter(
+			(item) => item.label.toLowerCase().includes(searchString.toLowerCase())
+		);
 		return (
 			<div className="container-500">
 				<AppHeader doneCount={doneCount} todoCount={todoCount}/>
-				<SearchPanel/>
+				<SearchPanel
+					onSearch={this.onSearch}
+					searchString={searchString}
+				/>
 				<ToDoList
-					todos={ items }
+					todos={ filteredItems }
 					onToggleImportant={this.onToggleImportant}
 					onToggleDone={this.onToggleDone}
 					onDelete={this.onDelete}
